@@ -1,0 +1,65 @@
+\documentclass{article}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+
+\title{Matrice di transizione in 2 passi per la passeggiata aleatoria su $\mathbb{Z}$}
+\author{Davide Angelocola}
+
+\begin{document}
+\maketitle
+
+\section{Problema}
+Scrivere la matrice di transizione in 2 passi per la passeggiata aleatoria su  $\mathbb{Z}$ quando $f(i)= \begin{cases}
+	p & i = +1     \\
+	q & i = -1     \\
+	r & i = 0      \\
+	0 & altrimenti 
+	\end{cases}
+$
+
+\section{Svolgimento a mano}
+Si considera una porzione arbitraria di $\mathbb{Z}$, ad esempio l'intervallo $[0, 3]$, ottenendo quindi una matrice $4x4$:
+
+$$P = \begin{pmatrix}0 & p & 0 & 0\cr q & 0 & p & 0\cr 0 & q & 0 & p \cr 0 & 0 & q & 0 \end{pmatrix}$$
+
+per 2 passi si ottiene:
+
+$$P^2 = \begin{pmatrix}0 & p & 0 & 0\cr q & 0 & p & 0\cr 0 & q & 0 & p \cr 0 & 0 & q & 0 \end{pmatrix} * \begin{pmatrix}0 & p & 0 & 0\cr q & 0 & p & 0\cr 0 & q & 0 & p \cr 0 & 0 & q & 0 \end{pmatrix} = \begin{pmatrix}pq & 0 & p^2 & 0\cr 0 & pq & 0 & p^2\cr q^2 & 0 & pq & 0 \cr 0 & q^2 & 0 & pq \end{pmatrix} $$
+
+mentre per 3 passi si ottiene:
+
+$$P^3 = P^2 * P =  \begin{pmatrix}pq & 0 & p^2 & 0\cr 0 & pq & 0 & p^2\cr q^2 & 0 & pq & 0 \cr 0 & q^2 & 0 & pq \end{pmatrix} * \begin{pmatrix}pq & 0 & p^2 & 0\cr 0 & pq & 0 & p^2\cr q^2 & 0 & pq & 0 \cr 0 & q^2 & 0 & pq \end{pmatrix} =  \begin{pmatrix}0 & p^2q & 0 & p^3\cr pq^2 & 0 & p^2q & 0\cr 0 & 2pq^2 & 0 & p^2q \cr q^3 & 0 & 2pq^2 & 0\end{pmatrix}$$
+
+La generica riga dispari di questa matrice risulta pertanto essere:
+
+$$ ... q^3 0 pq^2 0 p^2q 0 p^3 ... $$ 
+
+con l'elemento $0 di \mathbb{Z}$ 0 di probabilit\'{a} 0, poiche' non e' possibile raggiungerlo con un numero dispari di passi. 
+$$\begin{pmatrix}
+
+\section{Svolgimento con Maxima}
+Si considera una porzione di $\mathbb{Z}$, ad esempio l'intervallo $[-3, +3]$, ottenendo quindi una matrice $7x7$:
+
+$$P = \begin{pmatrix}0 & p & 0 & 0 & 0 & 0 & 0\cr q & 0 & p & 0 & 0 & 0 & 0\cr 0 & q & 0 & p & 0 & 0 & 0\cr 0 & 0 & q & 0 & p & 0 & 0\cr 0 & 0 & 0 & q & 0 & p & 0\cr 0 & 0 & 0 & 0 & q & 0 & p\cr 0 & 0 & 0 & 0 & 0 & q & 0\end{pmatrix}$$
+
+in 2 passi si ottiene:
+
+$$P^2 = \begin{pmatrix}0 & {p}^{2} & 0 & 0 & 0 & 0 & 0\cr {q}^{2} & 0 & {p}^{2} & 0 & 0 & 0 & 0\cr 0 & {q}^{2} & 0 & {p}^{2} & 0 & 0 & 0\cr 0 & 0 & {q}^{2} & 0 & {p}^{2} & 0 & 0\cr 0 & 0 & 0 & {q}^{2} & 0 & {p}^{2} & 0\cr 0 & 0 & 0 & 0 & {q}^{2} & 0 & {p}^{2}\cr 0 & 0 & 0 & 0 & 0 & {q}^{2} & 0\end{pmatrix}$$
+
+mentre in 3 passi:
+
+$$P^3 = \begin{pmatrix}0 & {p}^{3} & 0 & 0 & 0 & 0 & 0\cr {q}^{3} & 0 & {p}^{3} & 0 & 0 & 0 & 0\cr 0 & {q}^{3} & 0 & {p}^{3} & 0 & 0 & 0\cr 0 & 0 & {q}^{3} & 0 & {p}^{3} & 0 & 0\cr 0 & 0 & 0 & {q}^{3} & 0 & {p}^{3} & 0\cr 0 & 0 & 0 & 0 & {q}^{3} & 0 & {p}^{3}\cr 0 & 0 & 0 & 0 & 0 & {q}^{3} & 0\end{pmatrix}$$
+
+risulta quindi evidente che, in generale, per $n$ passi si ottiene la seguente matrice di transizione:
+
+$$P^n=\begin{pmatrix}0 & {p}^{n} & 0 & 0 & 0 & 0 & 0\cr {q}^{n} & 0 & {p}^{n} & 0 & 0 & 0 & 0\cr 0 & {q}^{n} & 0 & {p}^{n} & 0 & 0 & 0\cr 0 & 0 & {q}^{n} & 0 & {p}^{n} & 0 & 0\cr 0 & 0 & 0 & {q}^{n} & 0 & {p}^{n} & 0\cr 0 & 0 & 0 & 0 & {q}^{n} & 0 & {p}^{n}\cr 0 & 0 & 0 & 0 & 0 & {q}^{n} & 0\end{pmatrix}$$ 
+
+\section{Considerazioni}
+
+La matrice di transizione determinata con Maxima secondo me e' sbagliata, perche' alla riga 1 non ha una probabilita' a distanza 3, ma solamente a distanza 1. Ma essa rappresenta una matrice stocastica poiche' per ogni $n$ si verifica che: 
+
+$$ p^n + q^n = 1^n $$
+
+La matrice di transizione determinata a mano invece \'{e} intuitivamente corretta, poich\'{e} per saltare, ad esempio da 0 e 2, occorre saltare due volte a destra, il che avviene con probabilit\'{a} $p*p$. Inoltre essa considera l'evento "rimanere nella posizione corrente" che si verifica andando una volta avanti e una indietro. Questi eventi si verificano, rispettivamente, con probabilit\'{a} $p$ e $q$ e ci\'{o} giustifica gli elementi sulla diagonale pari a $pq$.
+
+\end{document}
