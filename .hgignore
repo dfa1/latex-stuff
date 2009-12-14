@@ -1,0 +1,11 @@
+syntax: glob
+
+*.aux
+*.dvi
+*.pdf
+*.log
+*.bbl
+*.blg
+*.tcp
+*.tps
+*~
