@@ -8,6 +8,14 @@
 \begin{document}
 \maketitle
 
+\section{Nota bene}
+La soluzione dell'esercizio \'{e} palesemente \textbf{sbagliata}, poich\'{e} si sono fatti \textsl{diversi} errori:
+\begin{itemize}
+    \item si \'{e} assunto $r=0$, si deve esplicitare per il caso $r\neq0$
+    \item posso rimanere fermo con due eventi, andando prima a destra e poi tornando e, simmetrimente, andando a sinistra e tornando: essi sono due eventi indipendenti di probabilit\'{a} totale pari a $2pq$
+    \item terzo e ultimo errore, si \'{e} fatto un conto su una matrice bi-infinata... come se fosse finita e ci\'{o} non \'{e} corretto
+\end{itemize}
+
 \section{Problema}
 Scrivere la matrice di transizione in 2 passi per la passeggiata aleatoria su  $\mathbb{Z}$ quando $f(i)= \begin{cases}
 	p & i = +1     \\
@@ -18,6 +26,7 @@ Scrivere la matrice di transizione in 2 passi per la passeggiata aleatoria su  $
 $
 
 \section{Svolgimento a mano}
+
 Si considera una porzione arbitraria di $\mathbb{Z}$, ad esempio l'intervallo $[0, 3]$, ottenendo quindi una matrice $4x4$:
 
 $$P = \begin{pmatrix}0 & p & 0 & 0\cr q & 0 & p & 0\cr 0 & q & 0 & p \cr 0 & 0 & q & 0 \end{pmatrix}$$
