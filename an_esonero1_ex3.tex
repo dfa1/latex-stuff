@@ -1,0 +1,60 @@
+\documentclass{article}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\usepackage[latin1]{inputenc}
+
+\title{Esercizio 3 - Esonero 1}
+\author{Davide Angelocola}
+
+\begin{document}
+\maketitle
+
+\section{Problema}
+Sia 
+
+$$A = \begin{pmatrix}2 & \frac{2}{3} & 0\cr \frac{2}{3} & -1 & -\frac{2}{3}\cr 0 & -\frac{2}{3} & 3 \end{pmatrix}$$
+
+\begin{enumerate}
+    \item dimostrare che $A$ è non singolare e dare una limitazione per $\mu_2(A)$
+    \item focalizzare l'autovalore di $A$ con modulo minimo
+\end{enumerate}
+
+\section{Svolgimento}
+
+\subsection{1. $A$ non singolare}
+
+Per il primo teorema di G. si considerano 3 cerchi, $C_1, C_2, C_3$:
+\begin{itemize}
+    \item $C_1$ ha centro in $2$ e raggio $\frac{2}{3}$
+    \item $C_2$ ha centro in $-1$ e raggio $|\frac{2}{3}|+|-\frac{2}{3}|=\frac{4}{3}$
+    \item $C_3$ ha centro in $3$ e raggio $\frac{2}{3}$
+\end{itemize}
+
+Per il secondo teorema di G. in $C_1 \bigcup C_3$ ci sono due autovalori. 
+Si può applicare anche il terzo teorema di G. poiché la matrice $A$ è irriducibile (anche se ha elementi nulli, $\forall i, j \in V \exists e \in E che unisce i a j$) i punti di frontiera non possono essere autovalori di $A$. Si escludono quindi i seguenti punti: [non serve calcolare].
+
+Poichè nessun cerchio passa per lo zero, si può affermare che la matrice è non singolare.
+
+\subsection{1.1 maggiorazione e minorazione per $\mu_2$}
+
+$A$ è simmetrica e reale, segue quindi che essa è normale. Si possono quindi considerare anche i cerchi $\tilde{C_1}, \tilde{C_2} e \tilde{C_3}$:
+
+\begin{itemize}
+    \item $\tilde{C_1}$ ha centro in $2$ e raggio $\sqrt{\frac{2}{3}}$
+    \item $\tilde{C_2}$ ha centro in $-1$ e raggio $\sqrt{|\frac{2}{3}|+|-\frac{2}{3}|}=\sqrt{\frac{4}{3}}$
+    \item $\tilde{C_3}$ ha centro in $3$ e raggio $\sqrt{\frac{2}{3}}$
+\end{itemize}
+
+Possiamo quindi scrivere la formula per 
+
+$$\mu_2(A) = \frac{max|\lambda_3|}{min|\lambda_1|}$$
+
+al fine di determinare una maggiorazione si scelgono due valori $\lambda_i$ tali da massimizzare il rapporto:
+
+$$\mu_2(A) \le \frac{3+\sqrt{\frac{2}{3}}}{-1-\sqrt{\frac{4}{3}}}$$
+
+analogamente si calcola per una minorazione di $\mu_2$ minizzando il rapporto. 
+
+
+ 
+\end{document}
