@@ -1,0 +1,38 @@
+\documentclass{article}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\usepackage[latin1]{inputenc}
+
+\title{Esercizio 1}
+\author{Davide Angelocola}
+
+\begin{document}
+\maketitle
+
+\section{Problema}
+Dimostrare che la matrice:
+
+$$A = \begin{pmatrix}2 & 1 & 1\cr 1 &-\frac{3}{2} & 1 &\cr 1 & 1 & -6  \end{pmatrix}$$
+
+\begin{enumerate}
+    \item è non singonalare
+    \item valutare $\mu_2(A)$ (minorazione e maggiorazione)
+\end{enumerate}
+
+\section{Svolgimento}
+
+\subsection{1)}
+$A$ è una matrice simmetrica e reale, perciò possiamo affermare che
+è normale ($A=A^H$). Ogni cerchio $C_w$ contiene almeno un autovalore. Dato che la matrice contiene 3 righe si hanno 3 cerchi, centrati in posizione $A_{i i}$:
+
+\begin{enumerate}
+    \item $C_1$ è centrato in 2 ($A_{1 1}$) e ha raggio $\sqrt{|1|^2+|1|^2} = \sqrt{2}$
+    \item $C_2$ ha centro in $-\frac{3}{2}$ e ha sempre raggio $\sqrt{2}$
+    \item infine $C_3$ è centrato in $-6$ e ha sempre raggio $\sqrt{2}$
+\end{enumerate}
+
+inoltre ciascuno di questi cerchi non "tocca" lo 0 poiché $C_1$ è compreso tra $[2-\sqrt{2}, 2+\sqrt{2}]$, $C_2$ fra $[\frac{-3}{2}-\sqrt{2},\frac{-3}{2}+\sqrt{2}]$ e $C_3$ tra $[-6-\sqrt{2},-6+\sqrt{2}]$. Poiche' $\sqrt{2}$ è minore di ogni centro si ha che $C_1$ è completamente positivo mentre $C_2$ e $C_3$ risultano negativi. Dato che $det(A) = \lambda_1 * \lambda_2 * \lambda_3$ e dato che nessun autovalore può essere zero si è dimostrato che la matrice $A$ è non singolare.
+
+\subsection{2}
+Poiché $A$ è normale possiamo scrivere $$\mu_2(A) = \frac{max|\lambda_i|}{min|\lambda_i|}$$ 
+\end{document}
