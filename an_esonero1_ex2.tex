@@ -11,8 +11,30 @@
 
 \section{Problema}
 
+Utilizzando 3 valori $f(x) = \frac{1}{x+1}$ nell'intervallo $[1, \frac{3}{2}]$ fornire un'approssimazione di $\int_1^{\frac{3}{2}}{f(x)dx}$.
 
 \section{Svolgimento}
 
+Per prima cosa si pone $n = 3$ e quindi $h$ vale:
+
+$$h = \frac{(b - a)}{n} = \frac{\frac{3}{2} - 1}{3} = \frac{1}{6}$$ 
+
+ora si può calcolare $$I_h\textdegree = h [ \frac{f(a)}{2}+f(a+h)+f(a+2h)+\frac{f(b)}{2}]=$$
+
+$$=\frac{1}{6}[\frac{f(1)}{2} + f(1+\frac{1}{6}) + f(1+\frac{2}{6})+\frac{f(\frac{3}{2})}{2}] = $$
+
+svolgendo i conti si ottiene:
+
+$$ = \frac{813}{3640} \approx 0.22 $$
+
+Devo applicare il metodo di Rosemberg?
+
+L'approssimazione trovata è ben lungi dall'essere precisa. Si procede quindi al calcolo di $I_{\frac{h}{2^k}}^{j}$
+
+\section{Svolgimento al computer}
+
+Sapendo che la primitiva di $\frac{1}{1+x}$ è $log(x+1)$:
+
+$$\int_1^{\frac{3}{2}}{\frac{1}{1+x}dx} = log(\frac{3}{2}+1) - log(2) = log(\frac{5}{4}) = 0.09$$
 
 \end{document}
