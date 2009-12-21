@@ -3,7 +3,7 @@
 \RequirePackage{amsmath}
 \usepackage[latin1]{inputenc}
 
-\title{Esercizio 2}
+\title{Esercizio 3}
 \author{Davide Angelocola}
 
 \begin{document}
@@ -23,10 +23,58 @@ Far vedere per quali $p$ si impiegano due passi per convergere.
 
 \section{Svolgimento}
 
-(e' palloso da scrivere in \LaTeX)
+Si fa uso di una matrice \textit{Givens} $3x3$ definita come:
 
-Si moltiplica per la matrice di \textit{Givens} definita come:
+$$S = \begin{pmatrix}
+ \alpha & \beta & 0  \cr 
+ -\beta & \alpha & 0 \cr  
+ 0 & 0 & 1           \cr
+\end{pmatrix}$$
 
-$$S = \begin{pmatrix}\alpha & \beta & 0 \cr -\beta & \alpha & 0 \cr 0 & 0 & 1\end{pmatrix}$$
+Quindi si procede con i prodotti:
+
+$$A = S^{-1}AS$$
+
+partendo da $S^{-1}A$:
+
+$$\left(
+\begin{array}{ccc}
+ \alpha  & -\beta  & 0 \\
+ \beta  & \alpha  & 0 \\
+ 0 & 0 & 1
+\end{array}
+\right)\left(
+\begin{array}{ccc}
+ 2 & 1 & 1 \\
+ 1 & 2 & p \\
+ 1 & p & 2
+\end{array}
+\right) = \begin{pmatrix}2\alpha -\beta & \alpha -2 \beta & \alpha -p \beta \cr, \alpha +2 \beta & 2 \alpha +\beta & p \alpha +\beta \cr 1 & p \end{pmatrix}\begin{pmatrix}
+ \alpha & \beta & 0  \cr 
+ -\beta & \alpha & 0 \cr  
+ 0 & 0 & 1           \cr
+\end{pmatrix}$$
+
+per poi calcolare il prodotto per $S$, ottenendo la matrice:
+
+$$\left(
+\begin{array}{ccc}
+ \alpha  (2 \alpha -\beta )-(\alpha -2 \beta ) \beta  & \alpha  (\alpha -2 \beta )+(2 \alpha -\beta ) \beta  & \alpha -p \beta  \\
+ -\beta  (2 \alpha +\beta )+\alpha  (\alpha +2 \beta ) & \alpha  (2 \alpha +\beta )+\beta  (\alpha +2 \beta ) & p \alpha +\beta  \\
+ \alpha -p \beta  & p \alpha +\beta  & 2
+\end{array}
+\right)$$
+
+Per definizione $\alpha - \beta p$, si annulla al primo passo. Per ottenere una matrice diagonale in due passi occorre porre 
+
+$$\alpha p + \beta = 0$$ 
+
+da cui si ottiene:
+
+$$p = -\frac{\beta}{\alpha} $$
+
+
+
+
 
 \end{document}
