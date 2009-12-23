@@ -22,16 +22,19 @@ $$A = \begin{pmatrix}2 & 1 & 1\cr 1 &-\frac{3}{2} & 1 &\cr 1 & 1 & -6  \end{pmat
 \section{Svolgimento}
 
 \subsection{1. $A$ non è singolare}
+
+Per poter dimostrare che $A$ sia non-singolare occorre studiare come sono posizionati gli autovalori. A tal fine si ricorre ai teoremi di \textit{Gershgorin}. Per il primo teorema di G. si ottengono due cerchi $C_1$ di centro $2$ e $C_2$ di centro $-\frac{3}{2}$ che contengono lo 0. Sempre tramite il primo teorema di G. si può affermare con certezza che $C_3$ non è un autovalore nulla in quanto è centrato in $-6$ e ha raggio $2$. 
+
+Per il secondo teorema di G. si evince che in $C_1 \bigcup C_2$ vi sono 2 autovalori. Infine, per il terzo teorema di G., si dimostra che $C_1$ non contiene l'autovalore 0, poiché la matrice $A$ è irriducibile (non contiene zeri!). Rimane quindi solo $C_3$ come unico candidato a contenere un autovalore 0 che renderebbe la matrice $A$ singolare.
+
 $A$ è una matrice simmetrica e reale, perciò possiamo affermare che
-è normale ($A=A^H$). Ogni cerchio $C_w$ contiene almeno un autovalore. Dato che la matrice contiene 3 righe si hanno 3 cerchi, centrati in posizione $A_{i i}$:
+è normale, ovvero $A=A^H$. Poiché $A$ è normale si può applicare il teorema dei cerchi tilde (ha un nome questo teorema?) e poiché tramite i teoremi di G. abbiamo fatto vedere che $C_1$ e $C_3$ non possono contenere un autovalore 0, allora non rimane che verificare $\tilde{C_3}$. Esso sempre in $-\frac{3}{2}$ ma raggio $\sqrt{1^2+1^2}=\sqrt(2) < 3/2$, quindi non tocca lo $0$.
 
-\begin{enumerate}
-    \item $C_1$ è centrato in 2 ($A_{1 1}$) e ha raggio $\sqrt{|1|^2+|1|^2} = \sqrt{2}$
-    \item $C_2$ ha centro in $-\frac{3}{2}$ e ha sempre raggio $\sqrt{2}$
-    \item infine $C_3$ è centrato in $-6$ e ha sempre raggio $\sqrt{2}$
-\end{enumerate}
+Infine poichè:
 
-inoltre ciascuno di questi cerchi non "tocca" lo 0 poiché $C_1$ è compreso tra $[2-\sqrt{2}, 2+\sqrt{2}]$, $C_2$ fra $[\frac{-3}{2}-\sqrt{2},\frac{-3}{2}+\sqrt{2}]$ e $C_3$ tra $[-6-\sqrt{2},-6+\sqrt{2}]$. Poiche' $\sqrt{2}$ è minore di ogni centro si ha che $C_1$ è completamente positivo mentre $C_2$ e $C_3$ risultano negativi. Dato che $det(A) = \lambda_1 * \lambda_2 * \lambda_3$ e dato che nessun autovalore può essere zero si è dimostrato che la matrice $A$ è non singolare.
+  $$det(A) = \lambda_1 * \lambda_2 * \lambda_3$$ 
+
+e nessun autovalore può essere zero si è dimostrato che la matrice $A$ \textbf{è non-singolare}.
 
 \subsection{2. Stima di $\mu_2(A)$}
 Per determinare una maggiorazione e una minorazione del numero di condizionamento in norma 2, ovvero $\mu_2(A)$, si nota innanzitutto che $A$ è matrice normale. Poiché $A$ è una matrice reale e simmetrica risulta che:
