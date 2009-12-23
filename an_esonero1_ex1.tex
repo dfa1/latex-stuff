@@ -32,9 +32,33 @@ $$=5\int_0^x{t^4-2t^3+t^2-\frac{1}{30}dt}=$$
 scrivendo la primitiva del polinomio in $t$ si ottiene:
 
 $$=5[\frac{t^5}{5}-2\frac{t^4}{4}+\frac{t^3}{3}-\frac{1}{30}t]=$$
-$$=5t^5-\frac{5}{2}t^4+\frac{5}{3}t^3-\frac{1}{6}t.$$
+$$=t^5-\frac{5}{2}t^4+\frac{5}{3}t^3-\frac{1}{6}t.$$
 
-$\Box$
+Per applicare la \ref{1} si deve calcolare la $B_5$ nei punti $n+1$ e $1$: 
+
+$$B_5(n+1) = (n+1)^5 - \frac{5}{2}(n+1)^4 + \frac{5}{3}(n+1)^3 - \frac{n+1}{6} = $$ 
+
+$$= -\frac{n}{6}+\frac{5 n^3}{3}+\frac{5 n^4}{2}+n^5$$
+
+dato che $B_5$ è un polinomio dispari la sua valutazione in 1 è 0 (da dimostrare):
+$$B_5(1) = 1 - \frac{5}{2} + \frac{5}{3} - \frac{1}{6} = \frac{18}{3} = 0$$
+
+infine:
+
+$$\sum_{x=1}^{n}{x^4} = \frac{1}{5}(n^5+\frac{5}{2}n^4+\frac{5}{3}n^3-\frac{n}{6})=$$
+
+$$=\frac{6n^5+15n^4+10n^3-n}{30}$$\label{2}
+
+\subsection{Verifica}
+
+Per $n=1$, ovvero per un termine della sommatoria, applicando la \ref{2} si ottiene:
+
+$$\sum_{x=1}^{1}{x^4} = 1^4 = \frac{6+15+10-1}{30} = 1$$.
+
+Per $n=2$ invece:
+
+$$\sum_{x=1}^{2}{x^4} = 1^4 + 2^4 = \frac{6*2^5+15 2^4+10 2^3-2}{30} = \frac{510}{30} = 17$$.
+
 
 \section{Svolgimento (sbagliato)}
 
