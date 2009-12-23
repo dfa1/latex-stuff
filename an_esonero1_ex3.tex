@@ -30,22 +30,21 @@ Per il primo teorema di G. si considerano 3 cerchi, $C_1, C_2, C_3$:
     \item $C_3$ ha centro in $3$ e raggio $\frac{2}{3}$
 \end{itemize}
 
-Per il secondo teorema di G. in $C_1 \bigcup C_3$ ci sono due autovalori. 
-Si può applicare anche il terzo teorema di G. poiché la matrice $A$ è irriducibile (anche se ha elementi nulli, $\forall i, j \in V \exists e \in E che unisce i a j$) i punti di frontiera non possono essere autovalori di $A$. Si escludono quindi i seguenti punti: [non serve calcolare].
-
-Poichè nessun cerchio passa per lo zero, si può affermare che la matrice è non singolare.
-
-\subsection{1.1 maggiorazione e minorazione per $\mu_2$}
+\'{E} evidente che il secondo cerchio, $C_2$, potrebbe includere lo zero. Inoltre,  per il secondo teorema di \textit{Gerschgorin}, in $C_1 \bigcup C_3$ ci sono due autovalori. Si può applicare anche il terzo teorema di G. poiché la matrice $A$ è irriducibile (anche se ha elementi nulli, $\forall i, j \in V \exists e \in E$ che unisce i a j) i punti di frontiera non possono essere autovalori di $A$. 
 
 $A$ è simmetrica e reale, segue quindi che essa è normale. Si possono quindi considerare anche i cerchi $\tilde{C_1}, \tilde{C_2} e \tilde{C_3}$:
 
 \begin{itemize}
-    \item $\tilde{C_1}$ ha centro in $2$ e raggio $\sqrt{\frac{2}{3}}$
-    \item $\tilde{C_2}$ ha centro in $-1$ e raggio $\sqrt{|\frac{2}{3}|+|-\frac{2}{3}|}=\sqrt{\frac{4}{3}}$
-    \item $\tilde{C_3}$ ha centro in $3$ e raggio $\sqrt{\frac{2}{3}}$
+    \item $\tilde{C_1}$ ha centro in $2$ e raggio $\sqrt{(\frac{2}{3})^2} = \frac{2}{3}$ 
+    \item $\tilde{C_2}$ ha centro in $-1$ e raggio $\sqrt{(\frac{2}{3})^2+(-\frac{2}{3})^2}=\sqrt{\frac{4}{9}} = \frac{2}{3}$
+    \item $\tilde{C_3}$ ha centro in $3$ e raggio $\sqrt{(\frac{2}{3})^2} = \frac{2}{3}$
 \end{itemize}
 
-Possiamo quindi scrivere la formula per 
+\'{E} subito evidente che i cerchi $\tilde{C_1}$ e $\tilde{C_3}$ corrispondono, rispettivamente, con i cerchi $C_1$ e $C_3$. Questo secondo teorema benchè non ci assicuri che in $\tilde{C_1}$ ci sia un autovalore sappiamo, per il secondo teorema di G. che nell'unione $C_1 \cup C_2$ ve ne sono due. Poiché il cerchio $\tilde{C_1}$ non "tocca" lo zero e dato che per il secondo teorema di G. ve ne deve essere uno nel cerchio $C_1$, ma il cerchio $\tilde{C_1}$ ha modulo minore di 1 e quindi si è dimostrato che non esistono autovalori nulli, pertanto la matrice è non-singolare.
+
+\subsection{1.1 maggiorazione e minorazione per $\mu_2$}
+
+$A$ è normale, possiamo quindi scrivere la formula per: 
 
 $$\mu_2(A) = \frac{max|\lambda_3|}{min|\lambda_1|}$$
 
@@ -53,8 +52,16 @@ al fine di determinare una maggiorazione si scelgono due valori $\lambda_i$ tali
 
 $$\mu_2(A) \le \frac{3+\sqrt{\frac{2}{3}}}{-1-\sqrt{\frac{4}{3}}}$$
 
-analogamente si calcola per una minorazione di $\mu_2$ minizzando il rapporto. 
+analogamente si calcola una minorazione di $\mu_2$ minimizzando il rapporto, ovvero prendendo il più grande autovalore al denominatore ed il più piccolo al numeratore. 
 
+\section{Svolgimento al computer}
 
- 
+\begin{verbatim}
+In[91]:= Eigenvalues[{{2,2/3,0},{2/3,-1,-2/3},{0,-2/3,3}} ]
+Out[91]= {Root[74+#1-36 #1^2+9 #1^3&,3],Root[74+#1-36 #1^2+9    #1^3&,2],Root[74+#1-36 #1^2+9 #1^3&,1]}
+
+In[92]:= N[%]
+Out[92]= {3.1194,2.12247,-1.24187}
+\end{verbatim}
+
 \end{document}
