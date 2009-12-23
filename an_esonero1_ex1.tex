@@ -18,7 +18,30 @@ Sapendo che $B_4(t) = t^2(t-1)^2 - \frac{1}{30}$ calcolare $B_5(t)$ e trovare un
 Al fine di determinare una formula chiusa per calcolare $\sum_{x=1}^{n}{x^4}$ si
 deve determinare $B_5(x)$ in modo tale da scrivere la sommatoria come:
 
-$$\sum_{x=1}^{n}{x^k} = \frac{1}{k+1} (B_5(n+1) - B_5(1))$$\label{1}
+$$\sum_{x=1}^{n}{x^k} = \frac{1}{k+1} (B_{k+1}(n+1) - B_{k+1}(1))=\frac{1}{5} (B_5(n+1) - B_5(1)) $$\label{1}
+
+Si vuole quindi calcolare un polinomio di Bernoulli tale che:
+
+$$B(x+1) - B(x) = 5x^4$$
+
+Per definizione $B_5(x) = 5\int_0^x{B_4(t)dt}$. Svolgendo i calcoli si ottiene:
+
+$$B_5(x) = 5\int_0^x{t^2(t-1)^2-\frac{1}{30}dt}=$$
+$$=5\int_0^x{t^4-2t^3+t^2-\frac{1}{30}dt}=$$
+
+scrivendo la primitiva del polinomio in $t$ si ottiene:
+
+$$=5[\frac{t^5}{5}-2\frac{t^4}{4}+\frac{t^3}{3}-\frac{1}{30}t]=$$
+$$=5t^5-\frac{5}{2}t^4+\frac{5}{3}t^3-\frac{1}{6}t.$$
+
+$\Box$
+
+\section{Svolgimento (sbagliato)}
+
+Al fine di determinare una formula chiusa per calcolare $\sum_{x=1}^{n}{x^4}$ si
+deve determinare $B_5(x)$ in modo tale da scrivere la sommatoria come:
+
+$$\sum_{x=1}^{n}{x^k} = \frac{1}{k+1} (B_{k+1}(n+1) - B_{k+1}(1))=\frac{1}{5} (B_5(n+1) - B_5(1)) $$\label{1}
 
 Si vuole quindi calcolare un polinomio di Bernoulli tale che:
 
@@ -36,9 +59,11 @@ isolando il termine di quarto grado si ottiene $a$:
 
 $$5ax^4=5x^4 \Rightarrow a = 1$$
 
-analogamente ponendo a 0 il coefficiente di $x^3$:
+analogamente ponendo a 0 il coefficiente di $x^3$ si ricava $b$:
 
-$$10a + 4b = 0 \Rightarrow 4b = -10 \Rightarrow b = -\frac{5}{2}$$
+$$10a + 4b = 0$$ 
+$$4b = -10$$ 
+$$b = -\frac{5}{2}$$
 
 similmente si ottengono i coefficienti di $c = -\frac{5}{3}, d = 0, e = \frac{19}{6}$. Si ottiene quindi il seguente polinomio:
 
