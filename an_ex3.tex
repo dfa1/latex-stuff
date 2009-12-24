@@ -23,7 +23,85 @@ Far vedere per quali $p$ si impiegano due passi per convergere.
 
 \section{Svolgimento}
 
-Si fa uso di una matrice \textit{Givens} $3x3$ definita come:
+Esistono diversi criteri per scegliere quale elemento azzerare, tra di essi ne consideriamo due, per i quali si può esibire la dimostrazione di convergenza:
+
+\begin{itemize}
+    \item al generico passo si sceglie l'elemento più grande in modulo
+    \item al generico passo si sceglie l'elemento con indici $i < j$
+\end{itemize}
+
+
+
+\subsection{Criterio del più grande in modulo}
+
+La matrice $A$ ha gli elementi sopra la diagonale pari a 1, quindi supponendo di adottare il primo criterio di scelta si presenterebbero 3 casi: 
+$$ p = 
+\begin{cases}
+   0 & in\ questo\ caso\ il\ metodo\ di\ Jacobi\ converge\ in\ un\ passo\\
+   1 & che\ abbiamo\ visto\ convergere\ in\ due\ passi\ in\ un\ altro\ esercizio \\
+   altrimenti &  si\ deve\ cominciare\ ad\ annullare\ proprio\ da\ questo\ elemento
+\end{cases}
+$$
+
+L'unico caso interessante risulta quindi essere quello in cui $p > 1$. Si applica il metodo di Jacobi, annullando proprio l'elemento posto in $A_{2 3}$ usando la seguente matrice di \textit{Givens} $3x3$ definita come:
+
+$$S = \begin{pmatrix}
+ 1 & 0 & 0           \cr
+ 0 & \alpha & \beta  \cr 
+ 0 & -\beta & \alpha \cr  
+\end{pmatrix}$$
+
+Applicando la prima trasformazione:
+
+$$A = S^{-1}AS$$
+
+$$
+=\left(
+\begin{array}{ccc}
+ 1 & 0 & 0 \\
+ 0 & \alpha  & -\beta  \\
+ 0 & \beta  & \alpha 
+\end{array}
+\right).\left(
+\begin{array}{ccc}
+ 2 & 1 & 1 \\
+ 1 & 2 & p \\
+ 1 & p & 2
+\end{array}
+\right).\left(
+\begin{array}{ccc}
+ 1 & 0 & 0 \\
+ 0 & \alpha  & \beta  \\
+ 0 & -\beta  & \alpha 
+\end{array}
+\right)
+=$$
+
+$$=\left(
+\begin{array}{ccc}
+ 2 & \alpha -\beta  & \alpha +\beta  \\
+ \alpha -\beta  & 2 \alpha ^2-2 p \alpha  \beta +2 \beta ^2 & p \alpha ^2-p \beta ^2 \\
+ \alpha +\beta  & p \alpha ^2-p \beta ^2 & 2 \alpha ^2+2 p \alpha  \beta +2 \beta ^2
+\end{array}
+\right)
+$$
+
+Risulta quindi evidente che $p\alpha^2 - p\beta^2$ si annulla se e solo se 
+$\alpha^2 - \beta^2 = 0$. Dopo il primo passo  si ottiene la  matrice $A'$:
+
+$$A' = 
+\begin{pmatrix}
+ 2 & \alpha -\beta  & \alpha +\beta  \cr
+ \alpha -\beta  & 2 \alpha ^2-2 p \alpha  \beta +2 \beta ^2 & 0\cr
+ \alpha +\beta  & 0 & 2 \alpha ^2+2 p \alpha  \beta +2 \beta ^2 \cr
+\end{pmatrix}
+$$ 
+
+\textbf{NB}: se riapplico una trasformazione ottengo una matrice con termini troppo complicati (equazioni di terzo grado in $\alpha$ e $\beta$). 
+
+\subsection{Critero sequenziale}
+
+Al generico passo scelgo l'elemento da annullare come $A_{i j}$ con $i < j$. Nel caso della matrice di $A$ si comincia con l'annullare elemento posto in $A_{1 2}$ usando la matrice di \textit{Givens} $3x3$ così definita:
 
 $$S = \begin{pmatrix}
  \alpha & \beta & 0  \cr 
@@ -31,7 +109,7 @@ $$S = \begin{pmatrix}
  0 & 0 & 1           \cr
 \end{pmatrix}$$
 
-Quindi si procede con i prodotti:
+Si applica la trasformazione:
 
 $$A = S^{-1}AS$$
 
@@ -49,7 +127,7 @@ $$\left(
  1 & 2 & p \\
  1 & p & 2
 \end{array}
-\right) = \begin{pmatrix}2\alpha -\beta & \alpha -2 \beta & \alpha -p \beta \cr, \alpha +2 \beta & 2 \alpha +\beta & p \alpha +\beta \cr 1 & p \end{pmatrix}\begin{pmatrix}
+\right) = \begin{pmatrix}2\alpha -\beta & \alpha -2 \beta & \alpha -p \beta \cr \alpha +2 \beta & 2 \alpha +\beta & p \alpha +\beta \cr 1 & p \end{pmatrix}\begin{pmatrix}
  \alpha & \beta & 0  \cr 
  -\beta & \alpha & 0 \cr  
  0 & 0 & 1           \cr
@@ -57,20 +135,50 @@ $$\left(
 
 per poi calcolare il prodotto per $S$, ottenendo la matrice:
 
-$$\left(
+$$=\left(
 \begin{array}{ccc}
  \alpha  (2 \alpha -\beta )-(\alpha -2 \beta ) \beta  & \alpha  (\alpha -2 \beta )+(2 \alpha -\beta ) \beta  & \alpha -p \beta  \\
  -\beta  (2 \alpha +\beta )+\alpha  (\alpha +2 \beta ) & \alpha  (2 \alpha +\beta )+\beta  (\alpha +2 \beta ) & p \alpha +\beta  \\
  \alpha -p \beta  & p \alpha +\beta  & 2
 \end{array}
-\right)$$
+\right)=$$
 
-Per definizione $\alpha - \beta p$, si annulla al primo passo. Per ottenere una matrice diagonale in due passi occorre porre 
+$$
+=\left(
+\begin{array}{ccc}
+ 2 \left(\alpha ^2-\alpha  \beta +\beta ^2\right) & \alpha ^2-\beta ^2 & \alpha -p \beta  \\
+ \alpha ^2-\beta ^2 & 2 \left(\alpha ^2+\alpha  \beta +\beta ^2\right) & p \alpha +\beta  \\
+ \alpha -p \beta  & p \alpha +\beta  & 2
+\end{array}
+\right)
+$$
 
-$$\alpha p + \beta = 0$$ 
+Si devono assegnare due valori ad $\alpha$ e $\beta$ in modo tale da annullare l'elemento $A_{1 2}$ (e $A_{2 1}$). All'inizio del secondo passo si ha quindi la seguente matrice:
 
-da cui si ottiene:
+$$
+A'=\left(
+\begin{array}{ccc}
+ 2 \left(\alpha ^2-\alpha  \beta +\beta ^2\right) & 0 & \alpha -p \beta  \\
+ 0 & 2 \left(\alpha ^2+\alpha  \beta +\beta ^2\right) & p \alpha +\beta  \\
+ \alpha -p \beta  & p \alpha +\beta  & 2
+\end{array}
+\right)
+$$
 
-$$p = -\frac{\beta}{\alpha} $$
+Si impone ora che gli elementi posti in $A_{1,3}$ e $A_{2, 3}$ si abbiano due elementi nulli:
+
+$$\alpha - p\beta = 0$$
+$$p\alpha + \beta = 0$$
+
+e da ciò si ottiene:
+
+$$\alpha - p\beta = p\alpha + \beta$$
+$$p(\alpha+\beta) = \alpha - \beta$$
+$$p = \frac{\alpha - \beta}{\alpha + \beta}$$
+ 
+
+
+
+
 
 \end{document}
