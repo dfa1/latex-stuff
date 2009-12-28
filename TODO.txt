@@ -1,0 +1,11 @@
+cp
+==
+
+- 6
+- 7 (a, b, c)
+- dal riepilogo:
+  - 1
+  - 2 (i, ii, iii)
+  - 3
+  - 4 (i, ii)
+  - 5 (i, ii)
