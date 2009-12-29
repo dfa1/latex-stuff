@@ -1,0 +1,66 @@
+\documentclass{article}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\usepackage[latin1]{inputenc}
+
+\title{Esercizio 7}
+\author{Davide Angelocola}
+
+\begin{document}
+\maketitle
+
+\section{Problema}
+
+\begin{description}
+    \item [a] calcolare la probabilità di assorbimento dello stato $0$ per la catena con matrice di transizione:
+
+$$
+P = 
+\begin{pmatrix}
+1 & 0 & 0 & 0                               \cr 
+\frac{1}{3} & 0 & \frac{1}{3} & \frac{1}{3} \cr 
+0 & \frac{1}{4} & \frac{1}{4} & \frac{1}{2} \cr 
+0 & 0 & 0 & 1                               \cr 
+\end{pmatrix}
+$$
+
+    \item [b] calcolare la probabilità che la catena sia assorbita nello stato 0 se la densità iniziale è quella uniforme
+
+    \item [c] calcolare i tempi medi di assorbimento in $\{1, 3\}$
+\end{description}
+
+\subsection{Svolgimento punto \textbf{a}}
+
+Al fine di determinare la probabilità di assorbimento dello stato $0$ si usa la seguente formula:
+
+$$
+x_i = \sum_{j \in S \backslash T}{p_{i j}} + \sum_{j \in T}{p_{i j}x_j}, \forall i \in T
+$$
+
+Nel caso in esame l'insieme degli stati transienti risulta essere:
+
+$$
+T = \{ 1, 2 \}
+$$
+
+si ottiene quindi un sistema composto da due equazioni:
+
+$$
+\begin{cases}
+1 & x_1 = \frac{1}{3} + \frac{1}{3}x_2        \\
+2 & x_2 = 0 + \frac{1}{4}x_1 + \frac{1}{4}x_2 \\
+\end{cases}
+$$
+
+Dalla seconda equazione si ricava che: 
+
+$$x_2 = \frac{4}{3}\frac{1}{4}x_1 = \frac{1}{3}x_1$$ 
+
+sostituendo $x_2$ nella prima equazione si ha:
+ 
+$$x_1 - \frac{1}{9}x_1 = \frac{1}{3}$$. Infine, applicando la definizione di $\lambda$ si conclude che la probabilità di essere assorbiti nello stato $0$ è:
+
+$$\lambda^{\{0\}}_1 = \frac{3}{8} = x_1$$
+$$\lambda^{\{0\}}_2 = \frac{1}{8} = x_2$$
+ 
+\end{document}
