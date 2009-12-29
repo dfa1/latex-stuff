@@ -11,9 +11,14 @@
 \maketitle
 
 \section{Esercizio}
-Tre libri sono messi uno sopra l'altro a formare una pila. In ogni istante se ne sceglie a caso uno e si mette in cima alla pila lasciando invariata la posizione degli altri due. Assumendo che i libri siano contraddistinti con le lettere A, B e C: descrivere con una catena di Markov il sistema il stato è costituito in ogni istante dalla disposizione dei libri nella pila.
+Tre libri sono messi uno sopra l'altro a formare una pila. In ogni istante se ne sceglie a caso uno e si mette in cima alla pila lasciando invariata la posizione degli altri due. 
 
-\section{Svolgimento}
+\begin{itemize}
+    \item Assumendo che i libri siano contraddistinti con le lettere A, B e C: descrivere con una catena di Markov il sistema il stato è costituito in ogni istante dalla disposizione dei libri nella pila.
+    \item Quando tempo occorre in media occorre se la catena è inizialmente nello stato (A,B,C)(dall'alto verso il basso) affinché il primo libro dall'alto sia quello contraddistinto dalla lettera C?
+\end{itemize}
+
+\section{Svolgimento primo punto}
 
 Assumendo che la pila di libri sia inizialmente così composta:
 
@@ -84,9 +89,38 @@ e la relativa rappresentazione con il grafo:
 \centering
 \includegraphics[scale=0.40]{cp_ex6_fig1.pdf}
 \caption{Grafo delle transizioni}
-\label{fig:}
 \end{figure}
 
 Dal grafo si evince che esso è fortemente connesso poiché esiste un cammino che collega ogni coppia di nodi. Risulta quindi che la catena è irrudicibile. Inoltre, essendo lo spazio degli stati finito, segue da un corollario del teorema sulle classi chiuse.
 
+\section{Svolgimento secondo punto}
+
+Rendendo assorbenti gli stati con C in cima alla pila si ottiene il seguente grafo delle transizioni:
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.40]{cp_ex6_fig2.pdf}
+\caption{Grafo delle transizioni modificato}
+\end{figure}
+
+La classe chiusa C conta quindi due stati assorbenti $S_2$ cioé $CAB$ e $S_4$ ovvero $CBA$. Possiamo ora impostare il sistema per il calcolo di $E_1[\tau_C]$:
+
+$$x_i = 1 + \sum_{h \in T}{p_{ih}x_h}$$
+
+per gli stati transienti $T = \{S_1, S_3, S_5, S_6\}$:
+
+$$
+\begin{cases}
+ S_1 & x_1 = 1 + \frac{x_1}{3} + \frac{x_3}{3} \\
+ S_3 & x_3 = 1 + \frac{x_3}{3} + \frac{x_1}{3} \\
+ S_5 & x_5 = 1 + \frac{x_5}{3} + \frac{x_3}{3} \\
+ S_6 & x_6 = 1 + \frac{x_6}{3} + \frac{x_3}{3} \\
+\end{cases}
+$$
+
+Sottraendo la seconda dalla prima si ottiene che $x_1 = x_3$. Svolgendo i conti si dimostra che $x_1 = x_3 = x_5 = x_6 = 3$, per cui: 
+
+$$
+E_1[T_C] = 3.
+$$ 
 \end{document}
