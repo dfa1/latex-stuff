@@ -1,0 +1,114 @@
+\documentclass{article}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\usepackage[latin1]{inputenc}
+
+\title{Esercizio 1 di riepologo}
+\author{Davide Angelocola}
+
+\begin{document}
+\maketitle
+
+\section{Problema}
+
+Sono date due urne e $2d$ biglie di cui $d$ nere e $d$ bianche. Inizialmente $d$ biglie scelte a caso sono poste nell'urna 1 e le restanti $d$ sono collocate nell'urna 2. Ad ogni istante una biglia è scelta a caso da ciascuna delle due urne ed è spostata nell'altra urna. Sia $X_0$ il numero iniziale delle biglie nere nell'urna 1 e $X_n$ il numero delle biglie nere nell'urna 1 al tempo $n$. Trovare le probabilità di transizione della catena di Markov $(X_n)_{n\ge0}$.
+
+\section{Svolgimento}
+
+Ad ogni estrazione di possono verificare tutte le combinazioni (4) degli eventi pesco una biglia dalla prima urna e dalla seconda. Gli eventi sono:
+
+\begin{enumerate}
+    \item pesco una biglia nera dalla prima urna e dalla seconda urna (NN)
+    \item pesco una biglia nera della prima urna e una bianca dalla seconda (NB)
+    \item pesco una biglia bianca dalla prima urna e dalla seconda (BB)
+    \item pesco una biglia bianca dalla prima urna e una nera dalla seconda (BN)
+\end{enumerate}
+
+Sono tutti eventi indipendenti ma a noi interessano solo gli eventi che cambiano il numero di biglie nere nella prima urna. Si esclude quindi l'evento (BB), poiché non altera il numero di biglie nere. Escludiamo inoltre l'evento (NN) poiché anch'esso non altera il numero di biglie nere essendo un mero scambio di biglie. 
+
+Studiamo quindi come si modifica la variabile $X_n$ in funzione dell'evento che si verifica:
+
+$$ X_n = \begin{cases}
+  (BN) & +1 \\ 
+  (NB) & -1 \\
+  (BB) & 0  \\
+  (NN) & 0  \\
+\end{cases}
+$$
+
+Notiamo subito che il numero delle biglie in ciascuna delle urne è sempre pari a $d$ a prescindere dalla sequenza di eventi che si verifica. Essendo gli eventi indipendenti si tratta di una catena di Markov. Si ha inoltre il sospetto che sia una catena di nascita e morte. Proviamo a dimostrare queste supposizioni.
+
+L'evento (BN) tale che incrementa $X_n$ si verifica se vengono verificati gli eventi (B) nella prima urna e (N) nella seconda, ovvero che viene pescata una biglia bianca dalla prima urna \textbf{e} biglia nera dalla seconda. Sia $i$ il numero di biglie nere nella prima urna, essendo gli eventi indipendenti di probabilità si ha che:
+
+$$
+P(B) = \frac{d-i}{d}
+$$
+$$
+P(N) = \frac{d-i}{d}
+$$
+$$
+P(BN) = P(B)*P(N) = \frac{d-i}{d} * \frac{d-i}{d} = \frac{(d-i)^2}{d}
+$$
+
+La probabilità vengono calcolate banalmente come casi favorevoli su casi possibili. 
+
+L'evento (NB) si verifica quando si pesca una biglia nera dalla prima urna e una bianca dalla seconda:
+
+$$
+P(N) = \frac{i}{d}  
+$$
+$$
+P(B) = \frac{i}{d}  
+$$
+$$
+P(NB) = \frac{i}{d} \frac{i}{d} = (\frac{i}{d})^2
+$$
+
+Gli eventi (NN) e (BB) come già asserito in precedenza non modificano $X_n$ e si verificano con probabilità uguali (per ipotesi ci sono $d$ palline nere e $d$ palline bianche):
+
+$$
+P(N) = P(B) = \frac{i}{d}   
+$$
+
+per quanto riguarda la prima urna. Dato che il numero totale delle biglie nere (o bianche) deve essere $d$ per la seconda urna la probabilità di estrarre una pallina dello stesso colore è pari a: 
+$$
+P(N) = P(B) = \frac{d-i}{d}  
+$$
+$$
+P(NN) = P(BB) = (\frac{i}{d})(\frac{d-i}{d}) 
+$$
+
+Notiamo che si tratta di una catena di nascita e morte. Avendo ora scritto tutte le probabilità possiamo determinare i parametri $p$, $q$ e $r$ della catena:
+
+$$
+p_i = P(X_{n+1} = i + 1 | X_n = i) = P(BN) = \frac{(d-i)^2}{d}
+$$
+
+$q_i$, ovvero la probabilità che la popolazione $X_n$ venga ridotta di una unità risulta essere l'evento:
+
+$$
+q_i = P(X_{n+1} = i - 1 | X_n = i) = P{NB} = \frac{(d-i)^2}{d}
+$$
+
+La probabilità che la popolazione risulti stazionaria, $r_i$ risulta essere l'unione degli eventi $P(NN)$ e $P(BB)$ di stessa probabilità:
+
+$$
+r_i = P(X_{n+1} = i | X_n = i) = P(NN) + P(BB) = 2 (\frac{i}{d})(\frac{d-i}{d}) 
+$$
+
+Verifichiamo quindi che si tratti veramente di una catena di markov, andando a vedere se la generica riga $i$ sommi a 1:
+
+$$
+p_i + r_i + q_i = \frac{(d-i)^2}{d} + 2 (\frac{i}{d})(\frac{d-i}{d} + \frac{(d-i)^2}{d} = 
+$$
+
+$$
+= \frac{d^2+i^2-2id+i^2+2id-2i^2}{d^2} = \frac{d^2}{d^2} = 1
+$$
+
+Inizialmente $d$ biglie scelte a caso tra quelle nere e bianche sono poste nella prima urna e le restanti $d$ nella seconda. Notiamo anche che nella prima urna sono presenti solo biglie nere allora necessariamente si verificherà l'evento (NB), ovvero verrà estratta una biglia nera dalla prima urna e una bianca dalla seconda. Analogamente se $i = 0$, ovvero nella prima urna sono presenti esclusivamente biglie di colore bianco allora si deve necessariemente verificare l'evento (BN). Siamo quindi in presenta di una \textbf{catena di nascita e morte con barriere riflettenti}.
+
+\section{Test}
+Avendo ora stabilito che si tratta di una catena di nascita e morte con barriere riflettenti possiamo "istanziare" il problema per ogni d. Proviamo per d = 3. 
+
+\end{document}
