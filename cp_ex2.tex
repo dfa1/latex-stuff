@@ -28,9 +28,9 @@ $$
 matrice di transizione su $S = \{ 1, 2, 3, 4, 5, 6 \}$.
 
 \begin{itemize}
-    \item i) Determinare il carattere degli stati
-    \item ii) Dimostrare che muovendosi dallo stato 4 con la dinamica descritta da $P$ la probabilità di raggiungere lo stato 6 in un tempo finito è almeno $\frac{3}{4}$
-    \item iii) Calcolare la probabilità di raggiungere lo stato 1 partendo dallo stato 2 in un tempo finito, $p_{2 1}$ e dare un'interpretazione probabilistica del numero $1 - p_{2 1}$.
+  \item i) Determinare il carattere degli stati
+  \item ii) Dimostrare che muovendosi dallo stato 4 con la dinamica descritta da $P$ la probabilità di raggiungere lo stato 6 in un tempo finito è almeno $\frac{3}{4}$
+  \item iii) Calcolare la probabilità di raggiungere lo stato 1 partendo dallo stato 2 in un tempo finito, $p_{2 1}$ e dare un'interpretazione probabilistica del numero $1 - p_{2 1}$. 
 \end{itemize}
 
 \section{i) Carattere degli stati}
@@ -40,12 +40,12 @@ Disegnamo il grafo delle transizioni:
 \includegraphics[scale=0.5]{cp_ex2_fig1.pdf}
 
 \begin{enumerate}
-    \item è uno stato assorbente
-    \item è uno stato transiente perchè comunica con 1 ma non è ricambiato
-    \item è anch'esso transiente perchè comunica sia con 4 sia con 6 ma non è ricambiato
-    \item forma, insieme agli stati 5 e 6, una classe irriducibile \footnote{cosa sono gli stati persistenti positivi?}
-    \item forma, insieme agli stati 4 e 6, una classe irriducibile
-    \item forma, insieme agli stati 4 e 5, una classe irriducibile
+  \item è uno stato assorbente
+  \item è uno stato transiente perchè comunica con 1 ma non è ricambiato
+  \item è anch'esso transiente perchè comunica sia con 4 sia con 6 ma non è ricambiato
+  \item forma, insieme agli stati 5 e 6, una classe irriducibile \footnote{cosa sono gli stati persistenti positivi?}
+  \item forma, insieme agli stati 4 e 6, una classe irriducibile
+  \item forma, insieme agli stati 4 e 5, una classe irriducibile
 \end{enumerate}
 
 \section{ii)}
@@ -54,39 +54,17 @@ Considerando la classe irriducibile trasformata in modo tale che lo stato 6 sia 
 
 \includegraphics[scale=0.5]{cp_ex2_fig2.pdf}
 
-Possiamo ora calcolare la probabilità di essere assorbiti in un tempo finito nello stato 6 a partire da 4 applicando la seguente formula:
-
-\begin{equation} 
-x_i = \sum_{j \in S \backslash T}{p_{i j}} + \sum_{j \in T}{p_{i j}x_j}, \forall i \in T
- \label{eq:1}
-\end{equation}
-
-con $T = \{ 4, 6\}$ si ottiene il seguente sistema:
-
-$$ x_4 = \frac{1}{2} + \frac{1}{3}x_5$$
-$$ x_5 = \frac{1}{2} + \frac{1}{4}x_4$$
-
-sostituendo $x_5$ nella prima si ottiene:
-
-$$x_4 = \frac{1}{2} + \frac{1}{3}(\frac{1}{2} + \frac{1}{2}x_4) = \frac{4}{5}$$
-
-e:
-
-$$x_5 = \frac{1}{2} + \frac{1}{2}\frac{4}{5} = \frac{9}{10}$$
-
-Applicando ora la:
+Possiamo quindi andare da 4 a 6 in 1 passo (minorazione(:
 
 $$
-P(\tau_6 < +\inf) = \sum_{j \in S}{\lambda_{j}^{\{6\}}p}  
+\rho_{46} \ge \rho_{46}^{(1)} = p_{46} = \frac{1}{2}
 $$
 
-possiamo calcolare la probabilità di essere assorbiti nello stato 6 partendo dallo stato 4:
+in due passi si possono prendere diverse percorsi in 2 passi:
 
-$$ 
-P(\tau_6 < +\inf) = \frac{4}{5} \frac{1}{2} + \frac{9}{10}\frac{1}{2} = \frac{17}{20}   
 $$
-
-che risulta essere maggiore di $\frac{3}{4}$, verificando quanto richiesto.
+\rho_{46} \ge \rho_{46}^{(1)} + \rho_{46}^{(2)} = p_{46} + (p_{45} + p_{56}) + (p_{44} + p_{46}) = \frac{3}{4}
+$$
 
 \section{iii)}
 
