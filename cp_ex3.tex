@@ -1,0 +1,61 @@
+\documentclass{article}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\usepackage[latin1]{inputenc}
+
+\title{Esercizio 3 di riepilogo}
+\author{Davide Angelocola}
+
+\begin{document}
+\maketitle
+
+\section{Testo del problema}
+
+Calcola la probabilità di raggiungere in un tempo finito lo stato 3 partendo dallo stato 1, per la catena con spazio degli starti $S = \{ 1, 2, 3, 4\}$ e con matrice di transizione:
+
+$$
+P = \begin{pmatrix}
+0 & \frac{1}{2} & \frac{1}{2} & 0 \cr 
+\frac{1}{2} & 0 & \frac{1}{4} & \frac{1}{4} \cr 
+0 & 0 & 1 & 0 \cr 
+0 & 0 & 0 & 1 \cr 
+\end{pmatrix}
+$$
+
+E se la densità iniziale fosse quella uniforme?
+
+\section{Svolgimento}
+
+Impostando il sistema di equazioni con $T={2,3}$ ottieniamo:
+
+$$x_1 = \frac{1}{2} + \frac{1}{2}x_2$$
+$$x_2 = \frac{1}{4} + \frac{1}{2}x_1$$
+
+sostituendo $x_2$ nella prima equazione otteniamo:
+
+$$x_1 = \frac{5}{6}$$
+
+da cui:
+
+$$x_2 = \frac{2}{3}$$
+
+Quindi, partendo dallo stato 1 si viene assorbiti in tempo finito in 3 con probabilità pari a:
+
+$$x_1 = \lambda_1^{\{3\}} = \frac{5}{6}$$
+
+
+Viceversa, con densità iniziale uniforme, si dovrebbe fare la "media" tra tutti i possibili valori iniziali. Si nota subito però che partire dallo proprio dallo stato 3 si raggiunge subito con probabilità 1 mentre partendo dallo stato 4 non si raggiunge mai lo stato 3, essendo 4 assorbente.
+
+Si ottiene dunque:
+
+$$P(raggiungere 3 in tempo finito) = \sum_i{\pi_0(i) \lambda_i^{\{3\}}}$$
+
+essendo la probabilità uniforme si ha:
+
+$$\frac{1}{4} (\pi_0(1) \lambda_1^{\{3\}} + \pi_0(1) \lambda_1^{\{3\}} + \pi_0(1) \lambda_1^{\{3\}} + \pi_0(1) \lambda_1^{\{3\}}) = $$
+
+$$=\frac{1}{4} (\frac{5}{6} + \frac{2}{3} + 1 + 0) =$$
+
+$$=\frac{5}{8}$$
+
+\end{document}
