@@ -1,0 +1,48 @@
+\documentclass{article}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\usepackage[latin1]{inputenc}
+
+\title{Metodo di Newton}
+\author{Davide Angelocola}
+
+\begin{document}
+\maketitle
+
+\section{Testo del problema}
+
+Applicare il metodo di Netwon per il calcolo degli autovalori alla seguente matrice di Hessemberg:
+
+$$
+A = \begin{pmatrix}
+2 & \frac{1}{3} & 1 \cr 
+3 & -\frac{5}{3} & 1 \cr 
+0 & \frac{11}{9} & \frac{5}{3} \cr 
+\end{pmatrix}
+$$
+
+\section{Svolgimento}
+
+Scriviamo $A - \lambda I$:
+
+$$
+A - \lambda I = \begin{pmatrix}
+2 - \lambda & \frac{1}{3} & 1 \cr 
+3 & -\frac{5}{3}  - \lambda & 1 \cr 
+0 & \frac{11}{9} & \frac{5}{3}  - \lambda \cr 
+\end{pmatrix}
+$$
+
+al fine di ottenere $ \alpha( \lambda ) $ scriviamo:
+
+$$
+(A - \lambda I) (
+\begin{pmatrix} 
+x_1(\lambda ) \cr 
+x_2(\lambda ) \cr 
+1 \cr 
+\end{pmatrix})
+
+$$
+
+\end{document}
