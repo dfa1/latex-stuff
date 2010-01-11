@@ -14,12 +14,25 @@
 Un uomo possiede 2 ombrielli e ne prende uno al mattino per andare in ufficio
 e a sera quando torna, naturalmente se piove e se ce n'è uno disponibile. Assumi che ogni volta la probabilità che piova sia $p$. Indica con $(X_n)_{n\ge 1})$ la catena di Markov che conta gli ombrelli disponibili prima dell'$n$-mo tragitto (senza distinguere tra tragitti di andata di di ritorno).
 
-\begin{enumerate}
-  \item Scrivi la matrice di transizione della catena e determina il carattere degli stati.
-  \item Con che probabilità l'uomo non ha ombrelli disponibili prima del secondo, del terzo e del quarto tragitto se si assume che prima del primo tragitto li abbia entrambi disponibili (la legge iniziale di $X_1$ è la delta di Dirac in 2)?
-  \item Dopo quanto tempo in media, se si assume che prima del primo tragitto abbia entrambi gli ombrelli disponibili, l'uomo non ha ombrelli disponibili?
-\end{enumerate}
+\begin{itemize}
+  \item i) Scrivi la matrice di transizione della catena e determina il carattere degli stati.
+  \item ii) Con che probabilità l'uomo non ha ombrelli disponibili prima del secondo, del terzo e del quarto tragitto se si assume che prima del primo tragitto li abbia entrambi disponibili (la legge iniziale di $X_1$ è la delta di Dirac in 2)?
+  \item iii) Dopo quanto tempo in media, se si assume che prima del primo tragitto abbia entrambi gli ombrelli disponibili, l'uomo non ha ombrelli disponibili?
+\end{itemize}
 
-\section{Svolgimento}
+\section{i)}
+$$
+P = \begin{pmatrix}
+1 & 0 & 0 \cr 
+p & q & 0 \cr 
+o & p & q \cr 
+\end{pmatrix}
+$$
+
+Lo stato 1 è chiaramente assorbemente mentre sia 1 sia 2 sono transienti.
+
+\section{ii)}
+
+\section{iii)}
 
 \end{document}
