@@ -3,39 +3,109 @@
 \RequirePackage{amsmath}
 \usepackage[latin1]{inputenc}
 \usepackage{url}
+\usepackage{bbding} %% per usare \Cross
+\usepackage{stmaryrd}
 
-\title{Sul Metodo Iterativo di Jacobi}
+\title{Sul Metodo Iterativo di Jacobi per il calcolo di autovalori}
 \author{Davide Angelocola}
 
 
 \begin{document}
 \maketitle
 \begin{abstract}
-Si presenta una selezione di criteri di scelta del prossimo elemento da annullare nel metodo iterativo di Jacobi per la diagonalizzazione di una matrice.
+Si presentano vari criteri di enumerazione del pivot da usare nel Metodo Iterativo di Jacobi per la diagonalizzazione di una matrice.
 \end{abstract}
 
 \section{Introduzione}
 
-\url{http://en.wikipedia.org/wiki/Jacobi_eigenvalue_algorithm}
-\url{http://www.maths.lancs.ac.uk/~gilbert/m306c/node17.html}
-\url{http://math.fullerton.edu/mathews/n2003/JacobiMethodMod.html}
+Il metodo di Jacobi per il calcolo degli autovalori di una matrice simmetrica è un algoritmo numerico iterativo. 
+
+Sia $A$ una matrice $nxn$ simmetrica. Si definisce \cite{difiore} quindi la serie di iterazioni definita da:
+
+$$
+A_0 = A \longrightarrow A_1 = S_1^TA_0S_1 \longrightarrow ... \longrightarrow A_k = S_k^TA_{k-1}S_k.
+$$ 
+
+e si sceglie $S_k$ in modo tale che:
+
+\begin{enumerate}
+  \item $S_k^T = S_k^{-1}$ con $A_k$ simile e simmetrica a $A_{k-1}$
+  \item $(A_k)_{p_k q_k} = 0$   
+\end{enumerate} 
+
+Il presente documento indaga sui criteri di scelta di $p_k$ e $q_k$ per i quali il metodo converge. Per ogni criterio di scelta si dimostra che:
+
+$$
+\{A_k\}_{k=0}^{+\infty}
+$$
+
+$$
+(A_k)_{p_k q_k} \longrightarrow 0, p_k \ne q_k
+$$
+
+$$
+(A_k)_{p_k q_k} \longrightarrow \lambda, p_k = q_k
+$$
+
+Nella sezione \ref{sec:othermethods} presenteremo dei metodi iterativi diversi da quello di Jacobi.
 
 \section{Criterio modulo più grande}
 
+Al generico passo si sceglie l'elemento più grande in modulo del passo precedente. La dimostrazione di convergenza del metodo di Jacobi con questo criterio di scelta del pivot è discussa in \cite{difiore}. Inoltre la convergenza del metodo è quadratica:
+
+$$
+da scrivere
+$$
+
 \section{Criterio sequenziale}
 
-\section{Criterio Davidson}
+Al generico passo si scelgono $p_k$ e $q_k$ tali che:
 
-\url{http://www.springerlink.com/content/v8p614u1201n778t}
+$$
+p_k < q_k
+$$
 
-\section{Non basta?}
-\url{http://mathoverflow.net/questions/ask}
+La dimostrazione della convergenza di questo metodo è stata discussa da 
+(citazione).
 
-\section{Conclusioni}
+\section{Criterio Loizou}
+%% da "On the Quadratic Convergence of the Jacobi Method for Normal Matrices"
+%% http://comjnl.oxfordjournals.org/cgi/content/abstract/15/3/274
+The pivot pair (p, q) is chosen so that the sum of the absolute squares of the elements in positions (p, q) and (q, p) is greatest.
+
+\section{Criterio quasi-ciclico}
+%% http://www.springerlink.com/content/gk0626782u774386
+
+\section{Criterio JBD}
+
+JDB sta per Joint-Block Diagonlization. Ad ogni iterazione si sceglie il pivot $(p, q)$ che assicura un decremento massimo di $C_{jbd}$. Questo richiede il calcolo di tutte le differenze $boff(A_k)$.
+ 
+\section{Parallelizzazione}
+
+\'{E} interessante notare che il metodo di Jacobi si presta molto bene ad essere usato in ambito parallelo.
+
+\section{Altri metodi}\label{sec:othermethods}
+
+Per completezza citiamo gli altri metodi iterativi:
+
+\begin{itemize}
+  \item medoto della potenza 
+  \item metodo di Lanczos  
+  \item metodo di Arnoldi
+  \item metodo di Davidson
+  \item metodo di Jacobi-Davidson\cite{jacdav}
+\end{itemize}
 
 \begin{thebibliography}{5}
-  
-  \bibitem{jacdav} 
+  \bibitem{difiore} Dispense corso Analisi Numerica 3, Di Fiore, 2007 
+ 
+  \bibitem{jacdav} A Jacobi-Davidson Iteration Method for Linear Eigenvalue problems, G. L. G. Sleijpen \Cross, H. A. Van der Vorst \Cross , 1996
+
+%% altre fonti
+%% \url{http://en.wikipedia.org/wiki/Jacobi_eigenvalue_algorithm}
+%% \url{http://www.maths.lancs.ac.uk/~gilbert/m306c/node17.html}
+%% \url{http://math.fullerton.edu/mathews/n2003/JacobiMethodMod.html}
+%% \url{http://www.springerlink.com/content/v8p614u1201n778t}
   
 \end{thebibliography}
 
