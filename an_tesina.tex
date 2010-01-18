@@ -59,22 +59,28 @@ $$
 
 \section{Criterio sequenziale}
 
-Al generico passo si scelgono $p_k$ e $q_k$ tali che:
+Al generico passo si scelgono due indici $p_k$ e $q_k$ tali che:
 
 $$
 p_k < q_k
 $$
 
+In questo modo si ottengono, in sequenza tutti gli elementi sopra la diagionale. Ad esempio, sia $A$ una matrice $4x4$ questo criterio produce la sequenza di elementi:
+
+$$
+A_{12}  A_{13} A_{14} A_{23} A_{24} A_{34}
+$$ 
+
 La dimostrazione della convergenza di questo metodo è stata discussa da 
 (citazione).
 
 \section{Criterio Loizou}
-%% da "On the Quadratic Convergence of the Jacobi Method for Normal Matrices"
-%% http://comjnl.oxfordjournals.org/cgi/content/abstract/15/3/274
-The pivot pair (p, q) is chosen so that the sum of the absolute squares of the elements in positions (p, q) and (q, p) is greatest.
+
+Il pivot $A_{p_k q_k}$ è scelto in modo tale che la somma del quadrato degli elementi $A_{p_k q_k}$ e $A_{q_k p_k}$ sia, in modulo maggiore. La convergenza del metodo di Jacobi usando questo criterio di enumerazione dei pivot è descritta da \cite{loizou}.
 
 \section{Criterio quasi-ciclico}
-%% http://www.springerlink.com/content/gk0626782u774386
+
+Questo critero è usato in un metodo "speciale" di Jacobi, chiamato dal suo autore V. Hari, quasi-ciclico \cite{hari}. 
 
 \section{Criterio JBD}
 
@@ -101,6 +107,10 @@ Per completezza citiamo gli altri metodi iterativi:
  
   \bibitem{jacdav} A Jacobi-Davidson Iteration Method for Linear Eigenvalue problems, G. L. G. Sleijpen \Cross, H. A. Van der Vorst \Cross , 1996
 
+  \bibitem{loizou} On the Quadratic Convergence of the Jacobi Method for Normal Matrices, \url{http://comjnl.oxfordjournals.org/cgi/content/abstract/15/3/274}
+
+  \bibitem{hari} Quadratic convergence of a special quasi-cyclic Jacobi method, V. Hari, \url{http://www.springerlink.com/content/gk0626782u774386}.
+ 
 %% altre fonti
 %% \url{http://en.wikipedia.org/wiki/Jacobi_eigenvalue_algorithm}
 %% \url{http://www.maths.lancs.ac.uk/~gilbert/m306c/node17.html}
