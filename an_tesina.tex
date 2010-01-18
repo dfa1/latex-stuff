@@ -68,8 +68,10 @@ $$
 In questo modo si ottengono, in sequenza tutti gli elementi sopra la diagionale. Ad esempio, sia $A$ una matrice $4x4$ questo criterio produce la sequenza di elementi:
 
 $$
-A_{12}  A_{13} A_{14} A_{23} A_{24} A_{34}
+A_{12} A_{13} A_{14} A_{23} A_{24} A_{34}
 $$ 
+
+\'{E} evidente che la sequenza dei pivot per una matrice $nxn$ sia lunga $n^2 - n$ ma essi possono venire presi più di una volta?
 
 La dimostrazione della convergenza di questo metodo è stata discussa da 
 (citazione).
@@ -86,13 +88,57 @@ Questo critero è usato in un metodo "speciale" di Jacobi, chiamato dal suo autor
 
 JDB sta per Joint-Block Diagonlization. Ad ogni iterazione si sceglie il pivot $(p, q)$ che assicura un decremento massimo di $C_{jbd}$. Questo richiede il calcolo di tutte le differenze $boff(A_k)$.
  
+\section{Criterio Hamiltoniano}
+
+Recentemente (2008) è stato presentato un criterio di scelta per il metodo di Jacobi che sfrutta la definizione delle matrici Hamiltoniane \cite{mehl}.
+
+Una matrice $H \in \mathbb{R}^{2nx2n}$ si dice Hamiltoniana se $H^TJ + JH = 0$ dove:
+
+$$
+J = \begin{pmatrix}
+0 & I_n \cr 
+-I_n & 0 \cr 
+\end{pmatrix}
+$$ 
+
+o in modo equivalente:
+
+$$
+H = \begin{pmatrix}
+A	 & C \cr 
+D & -A^T \cr 
+\end{pmatrix}
+$$
+
+dove $A$, $C$ e $D$ sono matrici $n x n$ e $C = C^T$ e $D = D^T$.
+ 
+Infine presentiamo varie strategie di scelta dei pivot:
+
+\begin{itemize}
+  \item bottom-to-top
+  \item top-to-bottom
+  \item out-to-in 
+\end{itemize}
+
 \section{Parallelizzazione}
 
-\'{E} interessante notare che il metodo di Jacobi si presta molto bene ad essere usato in ambito parallelo.
+\'{E} interessante notare che il metodo di Jacobi si presta molto bene ad essere usato in ambito parallelo. 
 
 \section{Altri metodi}\label{sec:othermethods}
 
-Per completezza citiamo gli altri metodi iterativi:
+Per completezza citiamo metodi iterativi "simili" a Jacobi:
+
+\begin{itemize}
+  \item calcolo della forma di Schur form per matrici complesse (Greenstadt, 1955, Eberlein, 1962/87, Stewart 1985)
+  \item diagonalizzazione di matrici normali (Goldstein, Hurwitz, 1959)
+  \item Hamiltonian matrices (Byers, 1986, Bunse-Gerstner Fabender, 1997)  
+  \item matrici doppiamente strutturate (Fabender, Mackey, Mackey, 2001)
+  \item ... molti altri ... Drmac, Veselic, ....
+\end{itemize}
+
+Tali metodi presentano tutti diverse proprietà di convergenza che non verranno trattati in questa sede.
+
+Si presentano infine metodi alternativi a quello di Jacobi ma che producono sempre una diagonalizzazione della matrice iniziale. Tali metodi sono:
 
 \begin{itemize}
   \item medoto della potenza 
@@ -103,6 +149,7 @@ Per completezza citiamo gli altri metodi iterativi:
 \end{itemize}
 
 \begin{thebibliography}{5}
+
   \bibitem{difiore} Dispense corso Analisi Numerica 3, Di Fiore, 2007 
  
   \bibitem{jacdav} A Jacobi-Davidson Iteration Method for Linear Eigenvalue problems, G. L. G. Sleijpen \Cross, H. A. Van der Vorst \Cross , 1996
@@ -110,7 +157,9 @@ Per completezza citiamo gli altri metodi iterativi:
   \bibitem{loizou} On the Quadratic Convergence of the Jacobi Method for Normal Matrices, \url{http://comjnl.oxfordjournals.org/cgi/content/abstract/15/3/274}
 
   \bibitem{hari} Quadratic convergence of a special quasi-cyclic Jacobi method, V. Hari, \url{http://www.springerlink.com/content/gk0626782u774386}.
- 
+  
+  \bibitem{mehl} Hamiltonian Jacobi methods: sweeping away convergence problems, C. Mehl, \url{http://www.math.tu-berlin.de/~mehl/talks/harburg.pdf}, 2008 
+
 %% altre fonti
 %% \url{http://en.wikipedia.org/wiki/Jacobi_eigenvalue_algorithm}
 %% \url{http://www.maths.lancs.ac.uk/~gilbert/m306c/node17.html}
