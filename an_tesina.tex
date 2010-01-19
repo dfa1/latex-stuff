@@ -1,3 +1,6 @@
+%% Importante:
+%%   - dimostrazione convergenza criterio ciclico 
+%%   - dimostrazione metodo per matrici normali
 \documentclass{article}
 \RequirePackage{amssymb}
 \RequirePackage{amsmath}
@@ -8,69 +11,74 @@
 \title{Sul Metodo Iterativo di Jacobi \\per il Calcolo degli Autovalori}
 \author{Davide Angelocola}
 
-
 \begin{document}
 \maketitle
 \begin{abstract}
-Si presentano vari criteri di enumerazione del pivot da usare nel Metodo Iterativo di Jacobi per la diagonalizzazione di una matrice.
+Presentiamo diversi criteri di enumerazione del pivot per il Metodo Iterativo di Jacobi per il calcolo degli autovalori. Vengono inoltre presentate le proprietà di convergenza e dell'errore mentre, dei criteri più significativi, viene esibita anche la dimostrazione. Concludiamo, con la sezione \ref{sec:othermethods}, presentando brevemente metodi per il calcolo degli autovalori \textbf{alternativi} a quello di Jacobi.
 \end{abstract}
 
 \section{Introduzione}
 
-Il metodo di Jacobi per il calcolo degli autovalori di una matrice simmetrica è un algoritmo numerico iterativo. 
+Il metodo di Jacobi per il calcolo degli autovalori di una matrice è un algoritmo numerico iterativo, ovvero che arriva alla soluzione per approssimazioni successive finchè l'errore è sotto una certa soglia.
 
-Sia $A$ una matrice $nxn$ simmetrica. Si definisce \cite{difiore} quindi la serie di iterazioni definita da:
+Sia $A$ una matrice $n \times n$ simmetrica. Si definisce \cite{difiore} quindi la serie di iterazioni definita da:
 
 $$
 A_0 = A \longrightarrow A_1 = S_1^TA_0S_1 \longrightarrow ... \longrightarrow A_k = S_k^TA_{k-1}S_k.
 $$ 
 
-e si sceglie $S_k$ in modo tale che:
+e $S_k$:
 
 \begin{enumerate}
-  \item $S_k^T = S_k^{-1}$ con $A_k$ simile e simmetrica a $A_{k-1}$
+  \item $S_k^T = S_k^{-1}$ in modo tale che $A_k$ sia simile a $A_{k-1}$
   \item $(A_k)_{p_k q_k} = 0$   
 \end{enumerate} 
 
-Il presente documento indaga sui criteri di scelta di $p_k$ e $q_k$ per i quali il metodo converge. Per ogni criterio di scelta si dimostra che:
+Indaghiamo quindi sui criteri di scelta degli indici $p_k$ e $q_k$, per ogni passo k, per i quali si ottiene convergenza. Per ogni criterio di scelta si dimostra che:
 
 $$
 \{A_k\}_{k=0}^{+\infty}
 $$
 
 $$
-(A_k)_{p_k q_k} \longrightarrow 0, p_k \ne q_k
+(A_k)_{i,j} \longrightarrow 0, i \ne j
 $$
 
 $$
-(A_k)_{p_k q_k} \longrightarrow \lambda, p_k = q_k
+(A_k)_{i,j} \longrightarrow \lambda, i = j
 $$
-
-Nella sezione \ref{sec:othermethods} presenteremo dei metodi iterativi diversi da quello di Jacobi.
 
 \section{Criterio modulo più grande}
 
-Al generico passo si sceglie l'elemento più grande in modulo del passo precedente. La dimostrazione di convergenza del metodo di Jacobi con questo criterio di scelta del pivot è discussa in \cite{difiore}. Inoltre la convergenza del metodo è quadratica:
+Al generico passo $k$ si sceglie l'elemento più grande in modulo della matrice $A_{k-1}$ al passo precedente:
 
 $$
-da scrivere
+|(A_{k-1})_{p_k, q_k}| = max_{i,j}|(A_{k-1})_{i, j}|
 $$
 
-\section{Criterio sequenziale}
+La dimostrazione di convergenza del metodo di Jacobi con questo criterio di scelta del pivot è discussa in \cite{difiore}.
 
-Al generico passo si scelgono due indici $p_k$ e $q_k$ tali che:
+Inoltre la convergenza del metodo è quadratica:
+
+$$
+TODO
+$$
+
+\section{Criterio ciclico}
+
+Al generico passo $k$ si scelgono due indici $p_k$ e $q_k$ tali che:
 
 $$
 p_k < q_k
 $$
 
-In questo modo si ottengono, in sequenza tutti gli elementi sopra la diagionale. Ad esempio, sia $A$ una matrice $4x4$ questo criterio produce la sequenza di elementi:
+In questo modo si ottengono, in sequenza tutti gli elementi sopra la diagionale. Ad esempio, sia $A$ una matrice $n \times n$, vengono presi ciclicamente gli elementi:
 
 $$
-A_{12} A_{13} A_{14} A_{23} A_{24} A_{34}
+A_{1,2} A_{1,3} A_{1,4} A_{2,3} A_{2,4} A_{n-1,n} A_{1,2} A_{1,3} A_{1,4} ... 
 $$ 
 
-\'{E} evidente che la sequenza dei pivot per una matrice $nxn$ sia lunga $n^2 - n$ ma essi possono venire presi più di una volta?
+\'{E} evidente che la sequenza dei pivot per una matrice $n \times n$ sia lunga \textit{almeno} $\frac{n^2 - n}{2}$.
 
 La dimostrazione della convergenza di questo metodo è stata discussa da 
 (citazione).
@@ -91,7 +99,7 @@ JDB sta per Joint-Block Diagonlization. Ad ogni iterazione si sceglie il pivot $
 
 Recentemente (2008) è stato presentato un criterio di scelta per il metodo di Jacobi che sfrutta la definizione delle matrici Hamiltoniane \cite{mehl}.
 
-Una matrice $H \in \mathbb{R}^{2nx2n}$ si dice Hamiltoniana se $H^TJ + JH = 0$ dove:
+Una matrice $H \in \mathbb{R}^{2n \times 2n}$ si dice Hamiltoniana se $H^TJ + JH = 0$ dove:
 
 $$
 J = \begin{pmatrix}
