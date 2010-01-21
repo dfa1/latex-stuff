@@ -1,6 +1,13 @@
-%% Importante:
-%%   - dimostrazione convergenza criterio ciclico 
-%%   - dimostrazione metodo per matrici normali
+%% TODO :
+%%   - dimostrazione convergenza criterio ciclico (da cercare) 
+%%   - metodo per matrici normali + fare esercizi a fine tesina
+%%   - studiare la convergenza del metodo RTZ e del metodo Zhou
+%%   - P.J. Eberlein "On the Schur decomposition of a matrixfor parallel 
+%%     computation"
+%%   - M. Mantharam and P.J. Eberlein "The real two-zero algorithm: a parallel
+%%     algorithm to reduce a real matrix to a real Schur form"
+%%   - G. W. Stewart "A Jacobi-like algorithm for computing the Schur 
+%%     decomposition of a nonhermitian matrix"
 \documentclass{article}
 \RequirePackage{amssymb}
 \RequirePackage{amsmath}
@@ -159,6 +166,50 @@ Si presentano infine metodi alternativi a quello di Jacobi ma che producono semp
   \item metodo di Davidson
   \item metodo di Jacobi-Davidson\cite{jacdav}
 \end{itemize}
+
+\section{Esercizi}
+\subsection{Lower bound moltiplicazione tra complessi}
+dimostrare che la moltiplicazione tra due complessi usa almeno 3 moltiplicazioni reali
+
+\subsection{Matrici skew-simmetriche}
+dimostrare che la matrice 
+$$\begin{pmatrix}
+0 & 1 \cr 
+-1 & 0 \cr 
+\end{pmatrix}
+$$
+è skew simmetrica; $A^T = -A$
+
+\subsection{Matrici quasi normali}
+Trovare la definizione.
+
+\subsection{Matrici a Blocchi}
+Come ridurre una matrice $4 \times 4$ a una matrice diagonale a blocchi $2 \times 2$ usando una trasformazione simmetrica ortogonale? 
+
+\subsection{Thm}
+
+Sia a A $\in n \times n$ a coefficienti reali. Allora se $\lambda*$ è autovalore di A allora necessariamente anche $\signed{\lambda*}$ è autovalore di A. (dove $\signed{\lambda}$ indica il coniugato).
+
+Da questo teorema deriva che ogni matrice $3 \times 3$ contiene almeno un autovalore reale.
+
+\subsection{Definizione polinomio caratteristico}
+
+$$
+A = \begin{pmatrix}
+0 & 1 \cr 
+-1 & 0 \cr 
+\end{pmatrix}
+$$
+
+gli autovalori sono le soluzioni del polinomio $\lambda^2 + 1$ che è ottenuto da:
+
+$$
+p(\lambda) = \lambda - AI =
+\begin{pmatrix}
+\lambda & -1 \cr 
+1 & \lambda \cr 
+\end{pmatrix}
+$$
 
 \begin{thebibliography}{5}
 
