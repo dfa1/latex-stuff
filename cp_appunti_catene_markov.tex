@@ -1,0 +1,70 @@
+\documentclass{article}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\usepackage[latin1]{inputenc}
+
+\title{Appunti semplificati \\ per le Catene di Markov}
+\author{Davide Angelocola}
+
+\begin{document}
+\maketitle
+
+\section{Persistenza + Irriducibilità}
+
+Se $S$ è finita allora esiste uno stato persistente. Se $P$ è irriducibile tutti gli stati sono persistenti. Tempo medio di ritorno è finito ed è:
+
+$$
+v_i = \frac{1}{E_i[t_i]}
+$$
+
+\section{Misure invarianti}
+
+Un vettore probabilistico $v$ con $v_i\ \in [0,1]$ e con $i\ \in S$ si dice invariante quando, assegnato $\pi_o = v$, si ha:
+
+$$
+\pi_n = v,\ \ \forall n \ge 1
+$$ 
+
+Ogni possibile distribuzione iniziale invariante assegna $0$ agli stati transienti.
+
+\section{Teorema di Markov/Kakutani}
+
+Una matrice di transizione su spazio finito ammette sempre almeno una misura invariante.
+
+\section{Ergodicità}
+
+Se una catena è ergotica allora ammette un'unica misura invariante chiamata, misura stazionaria. Osserva che se trovo più misure invariante, ad esempio se ci sono più di due stati assorbenti, allora la dinamica non è ergotica. 
+
+\section{Regolarità}
+
+Se $S$ è finita e $\exists\ n \ge 1 | p_{ij}^{(n)} > 0\ \forall i, j$ allora si dice regolare. 
+
+Condizione necessaria e sufficiente per la regolarità: $P$ irriducibile ed esista un loop.
+
+\section{Regolarità + Ergodicità}
+
+Se una catena è regolare allora ammette una misura stazionaria, ovvero è ergodica.
+
+\section{Periodicità}
+
+Se una catena irriducibile allora:
+
+$$
+t_i = t
+$$ 
+
+ovvero il periodo è lo stesso per tutti gli stati.
+
+\section{Periodicità + Ergodicità}
+
+Condizione necessaria e sufficiente per ergodicità di $P$ irriducibile:
+
+$$
+t = 1
+$$ 
+
+\section{Dinamiche bistocastiche}
+
+Ogni dinamica bistocastica ammette la misura invariante uniforme.
+
+\end{document}
