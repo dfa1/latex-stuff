@@ -90,4 +90,44 @@ $$x_3 = \frac{1}{5}$$
 
 La quantità $1 - \rho_{21}$ è la probabilità di non essere assorbiti in $1$ in un tempo finito. Per la natura di questa catena ciò equivale ad essere assorbiti nella classe irriducibile ${4, 5, 6}$. Poichè gli stati transienti sono in numero finito intuitivamente si deve "cadere" o nella classe ${1}$ o nella classe ${4, 5, 6}$. 
 
+\section{iv}\label{sec:iv}
+ Poichè 1 è stato assorbente la prima misura invariante $v^{(1)}$ è quella che assegna 1 allo stato assorbente 1 e 0 agli stati transienti (2 e 3):
+
+$$
+v^{(1)} = (1\ 0\ 0\ 0\ 0\ 0\ 0)
+$$
+
+L'altra classe chiusa è quella relativa agli stati 4 5 e 6. Risolvendo il sistema sulle equazioni si ottiene il vettore $v^{(2)}$:
+
+$$v = v \times P = (x_1\ x_2\ x_3\ x_4\ x_5\ x_6) P $$
+
+%% TODO: finire di scrivere il sistema 
+
+\section{v}\label{sec:v}
+La sottocatena $S_1 = {4, 5, 6}$ in quanto è finita e irriducibile (quindi persistente e positiva). La sua misura invariante, calcolata in \ref{sec:iv}, è  
+$v = (\frac{1}{4} \frac{1}{12} \frac{2}{3})$. Il tempo medio di ritorno nello stato 4 è:
+
+$$
+E[t_4] = \frac{1}{v_4} = \frac{1}{\frac{1}{4}} = 4 
+$$
+
+\section{vi}
+Considerando solo la classe chiusa formata dalla sottocatena $S_1 = {4, 5, 6}$. Occorre calcolare $P^2$:
+
+$$
+P(A) = \frac{1}{3}(p_{44}+p_{45}+p_{46})
+$$
+
+di $P^2$. Usando la markovienetà è facile calcolare $P(B)$:
+
+$$P(B) = P(A)  p_{45}$$
+
+Poichè 4 non comunica con 2 si ha che:
+
+$$
+P(C) = 0
+$$
+
+Infine per il calcolo di $P(D)$ si fanno le seguenti deduzioni: la catena è irriducibile e finita, poichè almeno uno stato ha $p_{ii} > 0$ si conclude che essa è aperiodica (t=1). Per una catena irriducibile il fatto che sia finita e aperiodica implica che sia ergotica, e quindi che ammette una unica misura invariante che coincide con quella "a regime". Essendo 50 un numero abbastanza grande possiamo applicare il limite, ottenendo quindi $\frac{1}{12}$ ovvero $v_4$ calcolato al punto \ref{sec:v}.
+
 \end{document}
