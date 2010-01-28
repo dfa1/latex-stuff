@@ -1,0 +1,40 @@
+\documentclass{article}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\usepackage[latin1]{inputenc}
+
+\title{Esercizio 6 di riepilogo}
+\author{Davide Angelocola}
+
+\begin{document}
+\maketitle
+
+\section{Testo del problema}
+
+\'{E} assegnata la catena $(X_n)_{n\ge 0}$ con matrice di transizione:
+
+$$
+P = \begin{pmatrix}
+0 & \frac{1}{2} & 0 & \frac{1}{2} \cr
+\frac{1}{2} & 0 & \frac{1}{2} & 0 \cr
+0 & 1 & 0 & 0 \cr
+0 & 0 & 0 & 0 \cr
+\end{pmatrix}
+$$
+
+e misura iniziale $\pi_0(1) = 1$.
+
+\begin{itemize}
+  \item i)  Studiare il comportamento della legge di $X_n$ per $n$ grande.
+  \item i)) Calcolare il modo approssimato: $P(X_82 = 3, X_81 = 4)$ e $P(X_60 = 1, X_58 = 3)$. 
+\end{itemize}
+
+\section{i)}
+
+Lo spazio degli stati è finito e irriducibile ma nessuno stato ha un loop. Si deduce quindi che la catena non è ergotica. Si nota anche che il periodo della catena è 2.
+
+Ci sono quindi due misure invarianti, una per gli stati pari e una per gli stati dispari. 
+
+\section{ii)}
+
+\end{document}
