@@ -9,6 +9,70 @@
 \begin{document}
 \maketitle
 
+%% TODO: 
+%%  1) definizione di rho
+%%  2) persistenza/transienza in termini di rho
+%%  3) catene di Ehrenfest
+
+\section{Stati comunicanti}
+$i$ comunica con $j$ se esiste un cammino finito che porta da $i$ a $j$:
+
+$$
+p_{ij}^{(n)} > 0
+$$ 
+
+\section{Classi irriducibili}
+
+Un sottoinsieme $C$ di $S$ si dice classe chiusa se per ogni $i$:
+
+$$
+\sum_{j \in C}{p_{ij} = 1}
+$$
+
+\section{Assorbenza}
+
+Se una classe chiusa è composta dal solo stato $i$ allora $i$ si dice stato assorbente.
+
+\section{Equazione di Chapman-Kolmogorov}
+
+$$
+p_{ij}^{(n+m)} = \sum_{h \in S}{p_{ih}^{(n)}p_{hj}^{(m)}}
+$$
+
+se $i$ comunica con $l$ e $l$ comunica con $j$ allora $i$ comunica con $j$.
+
+\section{Transienza}
+
+Condizione sufficiente per la transienza: $j \rightarrow i, i \not{\rightarrow} j \Rightarrow j\ transiente $
+
+\section{Persistenza}
+
+%%Condizione sufficiente per la persistenza: $j \rightarrow i, \not{\rightarrow} %%j \Rightarrow j\ transiente $.
+
+\section{Esistenza stato persistente}
+
+Se $C$ è una catena chiusa allora esiste sempre almeno uno stato persistente.
+
+\section{Assorbimento}
+
+Sistema per le probabilità di assorbimento per stati finiti:
+ 
+$$
+x_i = \sum_{h \in C} p_{ih} + \sum_{h \in T \backslash C}{p_{ih}x_h}
+$$
+
+NB: la soluzione è unica e coincide con $\lambda_i = P(T_C < +\infty)$
+
+\section{Tempi medi di assorbimento negli stati persistenti}
+
+Per ogni stato transiente $i$:
+
+$$
+x_i = 1 + \sum_{h \in T}{p_{ih}x_h} 
+$$
+
+NB: se lo spazio degli stati è finito ammette una sola soluzione.
+
 \section{Persistenza + Irriducibilità}
 
 Se $S$ è finita allora esiste uno stato persistente. Se $P$ è irriducibile tutti gli stati sono persistenti. Tempo medio di ritorno è finito ed è:
