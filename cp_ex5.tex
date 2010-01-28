@@ -11,6 +11,7 @@
 \maketitle
 
 \section{Testo del problema} 
+
 Un'apparecchiatura di età $j \ge 0$ all'inizio della giornata si guasta
 durante la giornata con probabilità $p_j$ e in tal caso è sostituita
 da un'apparecchiatura identica ma nuova, che entra in funzione
@@ -19,23 +20,26 @@ il numero delle giornate intere in cui l'apparecchiatura ha funzionato). Per $n 
 dell'apparecchiatura funzionante all'inizio della $n$+1-ma giornata.
 
 \begin{itemize} 
- \item i) Scrivi la matrice di transizione della catena di Markov $(X_n)_{n} \ge 0 $ e determina il carattere degli stati.
- \item ii) Se al tempo $n = 0$ l'apparecchiatura è nuova, con che probabilità è nuova al tempo $n = 2$?
+  \item i) Scrivi la matrice di transizione della catena di Markov $(X_n)_{n} \ge 0 $ e determina il carattere degli stati.
+  \item ii) Se al tempo $n = 0$ l'apparecchiatura è nuova, con che probabilità è nuova al tempo $n = 2$?
+  \item iii) Calcola, nell'ipotesi del punto precedente, con che probabilità l'apparecchiatura installata inizialmente viene utilizzata al massimo, ovvero sostituita per vecchiaia e non per guasto.
+  \item iv) Calcola le eventuali misure invarianti. Cosa puoi dire sul comportamento di $p_{ij}^{(n)}$ per $n$ grande?
+  \item v) Ogni quanto tempo in media avviene una sostituzione?
 \end{itemize} 
 
-\section{punto i)} 
+\section{i)} 
 
 Se $p_j$ è la probabilità che al giorno $j$ l'apparacchiatura si rompa, allora $q_j = 1- p_j$ rappresenta la probabilità di non rottura. Ogni stato rappresenta un giorno passato senza guasti. Ad esempio il giorno 3 rappresenta 3 giorni consecutivi senza guasti. Lo stato $j=0$ invece rappresenta un "guasto", ovvero un guasto e una sostituzione, con 0 giorni di "uptime". L'ultimo stato rappresenta lo stato "troppo vecchio" (età N).
 
 Proviamo a disegnare il problema con un grafo delle transizioni:
 
-%%\includegraphics[scale=0.40]{cp_ex5_fig1.pdf} 
+\includegraphics[scale=0.40]{cp_ex5_fig1.pdf} 
 
 Come si evince dal grafo si torna nello stato 0 con probabilità $p_j$, si va invece "al giorno successivo" con probabilità $q_j$. Una volta raggiunta l'età $N$ si obbliga la sostituzione ($p_N = 1$).
 
 Gli stati quindi sono tutti transienti?
 
-\section{punto ii)} 
+\section{ii)} 
 
 Intuitivamente guardando il grafo vediamo che sono possibili due percorsi:
 
@@ -75,5 +79,33 @@ p_0 & q_0 & 0 & 0 & 0 \cr
 $$
 
 La probabilità cercata è $$P^2_{0 0} = p_0^2 + p_1 q_0$$.
+
+\section{iii)}
+
+La probabilitità l'intersezione di eventi indipendenti:
+
+$$
+q_1 * q_2 * q_3 * ... * q_{N-1}
+$$
+
+\section{iv)}
+
+La catena risulta essere irriducibile e finita, e poichè $p_{00} > 0$ allora si deduce che la catena è ergotica, e quindi ammette una sola misura invariante, e quindi ha un comportamento a regime:
+
+$$
+\lim_{x \to +\infty}{p_{ij}^{(n)}} = v_j
+$$
+
+%% TODO: risolvere il sistema
+
+\section{v)} 
+
+Per le catene ergotiche vale sempre l'equazione: 
+
+$$
+E[t_0] = \frac{1}{v_0} 
+$$
+
+%% TODO: serve risolvere il sistema al punto precedente
 
 \end{document}
